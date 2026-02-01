@@ -1,65 +1,157 @@
-import Image from "next/image";
+"use client";
+
+import { motion, Variants } from "framer-motion";
+import { ProjectCard } from "@/components/project-card";
+
+const container: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.8
+    }
+  },
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="space-y-32">
+      <motion.section
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="flex flex-col gap-8 pt-12 md:pt-24"
+      >
+        <motion.div variants={item} className="space-y-2">
+          <h1 className="text-4xl md:text-6xl font-medium tracking-tight text-white max-w-3xl leading-[1.1]">
+            Computational mathematics and<br />
+            <span className="text-neutral-500">algorithmic systems.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+        </motion.div>
+
+        <motion.p variants={item} className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
+          High-precision number theory • Dynamics • Algorithms at scale
+        </motion.p>
+
+        <motion.div variants={item} className="flex gap-4 pt-4">
+          <a href="#work" className="text-sm font-mono text-white border-b border-neutral-700 hover:border-white transition-colors pb-1">
+            View Research
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href="mailto:contact@akshit.dev" className="text-sm font-mono text-neutral-500 border-b border-transparent hover:text-white transition-colors pb-1">
+            Contact
           </a>
+        </motion.div>
+      </motion.section>
+
+      {/* Featured Work Section */}
+      <motion.section id="work" variants={container} className="space-y-12">
+        <motion.div
+          variants={item}
+          className="flex items-end justify-between border-b border-neutral-800 pb-6"
+        >
+          <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-wider">Featured Work</h2>
+          <span className="text-xs font-mono text-neutral-700">2025</span>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ProjectCard
+            title="Discrete Descent Hybrid Algorithm"
+            description="Numerical zero verification for the Riemann zeta function up to T = 10¹⁶ using hybrid descent methods and topological interlacing."
+            tags={["Number Theory", "C++", "HPC"]}
+            href="/research/zeta-zeros"
+            year="2025"
+            highlight
+            progress={95}
+          />
+          <ProjectCard
+            title="Kimberling Expulsion Conjecture"
+            description="Analyzing the Kimberling expulsion process using an O(1) state recurrence. Found record survivor (67B steps)."
+            tags={["Dynamics", "Probability", "C++"]}
+            href="/research/kimberling"
+            year="2025"
+            progress={85}
+          />
         </div>
-      </main>
-    </div>
+      </motion.section>
+
+      {/* Other Projects Section */}
+      <motion.section variants={container} className="space-y-12">
+        <motion.div
+          variants={item}
+          className="flex items-end justify-between border-b border-neutral-800 pb-6"
+        >
+          <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-wider">Other Projects</h2>
+          <span className="text-xs font-mono text-neutral-700">2025 - 2026</span>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ProjectCard
+            title="ℂ-Space Engine"
+            description="A generalized 2D physics engine simulating a universe where physical constants are Complex Numbers, featuring the Diametric Drive and Chiral Friction."
+            tags={["Physics Sim", "C++20", "Complex Analysis"]}
+            href="/research/c-space"
+            year="2025"
+            progress={75}
+          />
+          <ProjectCard
+            title="Kolakoski Sequence Analysis"
+            description="Investigating structural properties of the Kolakoski sequence density using graph-theoretic approaches on a 34-state manifold."
+            tags={["Combinatorics", "Graph Theory", "Python"]}
+            href="/research/kolakoski"
+            year="2026"
+            progress={90}
+          />
+          <ProjectCard
+            title="NeuroOS Kernel"
+            description="Experimental biomimetic kernel exploring memory persistence models inspired by neural reinforcement mechanics."
+            tags={["Systems", "Bio-inspired", "C"]}
+            href="/engineering/neuro-os"
+            year="2025"
+            progress={60}
+          />
+          <ProjectCard
+            title="Non-Ergodic Random Walks in Heavy-Tailed Distributions"
+            description="Studying ergodicity breaking in Lévy flights with α=1. Exploring the failure of time-average convergence in heavy-tailed systems."
+            tags={["Probability Theory", "Stochastic Processes"]}
+            href="/research/heavy-tails"
+            year="2026"
+            progress={90}
+          />
+          <ProjectCard
+            title="Twin Prime Cluster"
+            description="Distributed computing architecture for validating twin prime candidates at scale. Validating 400+ candidates simultaneously."
+            tags={["Distributed Systems", "Cloud", "Python"]}
+            href="/research/twin-primes"
+            year="2025"
+            progress={80}
+          />
+        </div>
+      </motion.section>
+
+      {/* Footer */}
+      <footer className="pt-32 pb-8 border-t border-neutral-900 flex justify-between items-end">
+        <div className="space-y-2">
+          <p className="text-sm text-neutral-500">Akshit Sivaraman</p>
+          <p className="text-xs text-neutral-700 font-mono">Shiv Nadar Institute of Eminence</p>
+        </div>
+        <div className="flex gap-6">
+          <a href="https://github.com/shiviatrix" target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-neutral-600 hover:text-white transition-colors">GitHub</a>
+          <a href="mailto:contact@akshit.dev" className="text-xs font-mono text-neutral-600 hover:text-white transition-colors">Email</a>
+        </div>
+      </footer>
+    </main>
   );
 }
