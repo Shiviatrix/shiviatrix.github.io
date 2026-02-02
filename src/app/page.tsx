@@ -50,7 +50,7 @@ export default function Home() {
           <a href="#work" className="text-sm font-mono text-white border-b border-neutral-700 hover:border-white transition-colors pb-1">
             View Research
           </a>
-          <a href="mailto:contact@akshit.dev" className="text-sm font-mono text-neutral-500 border-b border-transparent hover:text-white transition-colors pb-1">
+          <a href="mailto:as658@snu.edu.in" className="text-sm font-mono text-neutral-500 border-b border-transparent hover:text-white transition-colors pb-1">
             Contact
           </a>
         </motion.div>
@@ -149,7 +149,7 @@ export default function Home() {
         </div>
         <div className="flex gap-6">
           <a href="https://github.com/shiviatrix" target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-neutral-600 hover:text-white transition-colors">GitHub</a>
-          <a href="mailto:contact@akshit.dev" className="text-xs font-mono text-neutral-600 hover:text-white transition-colors">Email</a>
+          <a href="mailto:as658@snu.edu.in" className="text-xs font-mono text-neutral-600 hover:text-white transition-colors">Email</a>
         </div>
       </footer>
     </main>
