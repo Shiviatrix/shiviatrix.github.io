@@ -63,7 +63,7 @@ export default function Home() {
           className="flex items-end justify-between border-b border-neutral-800 pb-6"
         >
           <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-wider">Featured Work</h2>
-          <span className="text-xs font-mono text-neutral-700">2025</span>
+          <span className="text-xs font-mono text-neutral-700">Highest Impact</span>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -75,14 +75,45 @@ export default function Home() {
             year="2025"
             highlight
             progress={95}
+            status="Verified"
+            coreIdea="O(log n) descent via Gram points instead of O(n) search."
+            implication="Proves RH holds at heights where classical methods fail computationally."
           />
           <ProjectCard
-            title="Kimberling Expulsion Conjecture"
-            description="Analyzing the Kimberling expulsion process using an O(1) state recurrence. Found record survivor (67B steps)."
-            tags={["Dynamics", "Probability", "C++"]}
-            href="/research/kimberling"
+            title="Non-Ergodic Random Walks"
+            description="Studying ergodicity breaking in Lévy flights with α=1. Exploring the failure of time-average convergence in heavy-tailed systems."
+            tags={["Probability Theory", "Stochastic Processes"]}
+            href="/research/heavy-tails"
+            year="2026"
+            highlight
+            progress={90}
+            status="Negative Theorem"
+            coreIdea="Extreme events dominate the history, preventing statistical stabilization."
+            implication="Standard financial risk models (using Gaussian assumptions) fundamentally fail here."
+          />
+          <ProjectCard
+            title="NeuroOS Kernel"
+            description="Experimental biomimetic kernel exploring memory persistence models inspired by neural reinforcement mechanics."
+            tags={["Systems", "Bio-inspired", "C"]}
+            href="/engineering/neuro-os"
             year="2025"
-            progress={85}
+            highlight
+            progress={60}
+            status="Experimental"
+            coreIdea="Memory pages decay over time and must be 'reinforced' by usage."
+            implication="An operating system that 'forgets' unused data naturally like a brain."
+          />
+          <ProjectCard
+            title="ℂ-Space Engine"
+            description="A generalized 2D physics engine simulating a universe where physical constants are Complex Numbers."
+            tags={["Physics Sim", "C++20", "Complex Analysis"]}
+            href="/research/c-space"
+            year="2025"
+            highlight
+            progress={75}
+            status="Simulation"
+            coreIdea="Extending Newton's laws to the Complex plane (Imaginary mass & friction)."
+            implication="Predicts 'Death Spirals' and 'Negative Mass Runaways' in exotic physics."
           />
         </div>
       </motion.section>
@@ -99,14 +130,6 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <ProjectCard
-            title="ℂ-Space Engine"
-            description="A generalized 2D physics engine simulating a universe where physical constants are Complex Numbers, featuring the Diametric Drive and Chiral Friction."
-            tags={["Physics Sim", "C++20", "Complex Analysis"]}
-            href="/research/c-space"
-            year="2025"
-            progress={75}
-          />
-          <ProjectCard
             title="Kolakoski Sequence Analysis"
             description="Investigating structural properties of the Kolakoski sequence density using graph-theoretic approaches on a 34-state manifold."
             tags={["Combinatorics", "Graph Theory", "Python"]}
@@ -115,20 +138,12 @@ export default function Home() {
             progress={90}
           />
           <ProjectCard
-            title="NeuroOS Kernel"
-            description="Experimental biomimetic kernel exploring memory persistence models inspired by neural reinforcement mechanics."
-            tags={["Systems", "Bio-inspired", "C"]}
-            href="/engineering/neuro-os"
+            title="Kimberling Expulsion Conjecture"
+            description="Analyzing the Kimberling expulsion process using an O(1) state recurrence. Found record survivor (67B steps)."
+            tags={["Dynamics", "Probability", "C++"]}
+            href="/research/kimberling"
             year="2025"
-            progress={60}
-          />
-          <ProjectCard
-            title="Non-Ergodic Random Walks in Heavy-Tailed Distributions"
-            description="Studying ergodicity breaking in Lévy flights with α=1. Exploring the failure of time-average convergence in heavy-tailed systems."
-            tags={["Probability Theory", "Stochastic Processes"]}
-            href="/research/heavy-tails"
-            year="2026"
-            progress={90}
+            progress={85}
           />
           <ProjectCard
             title="Twin Prime Cluster"
