@@ -34,7 +34,7 @@ export default function ZetaZerosPage() {
                         </h1>
                     </div>
                     <p className="text-xl text-neutral-400 font-light">
-                        Deploying the v21 Gram-Guided Descent engine to verify the Riemann Hypothesis.
+                        Deploying the v21 Gram-Guided Descent engine to investigate the Riemann Hypothesis.
                     </p>
                 </div>
 
@@ -105,7 +105,7 @@ export default function ZetaZerosPage() {
                 viewport={{ once: true }}
                 className="space-y-6"
             >
-                <h2 className="text-2xl font-medium text-white">Verification Methodology</h2>
+                <h2 className="text-2xl font-medium text-white">Validation Strategy</h2>
                 <div className="prose prose-invert prose-neutral max-w-none">
                     <p>
                         The correctness of the algorithm relies on the <strong>Topological Interlacing Property</strong> of Laguerre-Pólya functions.
@@ -121,7 +121,7 @@ export default function ZetaZerosPage() {
                         </p>
                     </div>
                     <p>
-                        This allows us to certify zeros using only <strong>sign checks</strong> at discrete points, completely bypassing the need for high-precision magnitude estimates required by Rouché's Theorem. This reduces the complexity of resolving a Lehmer pair of width <MathInline tex="\delta" /> from <MathInline tex="O(1/\delta)" /> to <MathInline tex="O(\log(1/\delta))" />.
+                        This allows us to certify zeros using only <strong>sign checks</strong> at discrete points. This direct approach reduces the complexity of resolving a Lehmer pair of width <MathInline tex="\delta" /> from <MathInline tex="O(1/\delta)" /> to <MathInline tex="O(\log(1/\delta))" />.
                     </p>
                 </div>
             </motion.section>
@@ -156,7 +156,7 @@ export default function ZetaZerosPage() {
                             </table>
                         </div>
                         <p className="text-xs text-neutral-500 pt-2 text-right">
-                            Verified against <a href="https://www.lmfdb.org/zeros/zeta/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-400 transition-colors">LMFDB Zeros Database</a>
+                            Checked against <a href="https://www.lmfdb.org/zeros/zeta/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-400 transition-colors">LMFDB Zeros Database</a>
                         </p>
                     </div>
 
