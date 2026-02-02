@@ -2,58 +2,144 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+// Import the static data
+import zetaPathRaw from "@/data/zeta-path.json";
+
+// Typed for TS
+const zetaPath = zetaPathRaw as number[][];
 
 export function ZetaVis() {
-    // Standardized Polyline for stable morphing (100 points)
-    // We oscillate between a "relaxed" wave and a "compressed" chirp
-    const points = 100;
-    const width = 100;
-    const height = 50;
-    const mid = height / 2;
+    const [mounted, setMounted] = useState(false);
 
-    const generatePath = (freqMultiplier: number, ampMultiplier: number) => {
-        let d = `M 0 ${mid}`;
-        for (let i = 1; i <= points; i++) {
-            const x = (i / points) * width;
-            const t = (i / points) * Math.PI * 4; // 2 cycles base
-            // Chirp: frequency increases with t
-            // phase shift to make it look like sliding
-            const phase = 0;
-            const freq = 1 + t * freqMultiplier;
-            const y = mid + Math.sin(t * freq + phase) * 20 * ampMultiplier;
-            d += ` L ${x} ${y}`;
-        }
-        return d;
-    };
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-    const pathA = generatePath(0.1, 0.5); // Relaxed
-    const pathB = generatePath(0.8, 1.0); // Intense Chirp
+    useEffect(() => {
+        if (!mounted) return;
+
+        const canvas = document.getElementById('zeta-canvas') as HTMLCanvasElement;
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        // Set high DPI
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+
+        let animationId: number;
+
+        // Params
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const scale = 50;
+        const speed = 2; // Points per frame
+
+        let currentIndex = 0;
+        const history: { x: number, y: number }[] = [];
+
+        const animate = () => {
+            // Clear
+            ctx.clearRect(0, 0, rect.width, rect.height);
+
+            // Grid
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, cy); ctx.lineTo(rect.width, cy);
+            ctx.moveTo(cx, 0); ctx.lineTo(cx, rect.height);
+            ctx.stroke();
+
+            // Progress Path
+            // We adding 'speed' points per frame
+            for (let k = 0; k < speed; k++) {
+                if (currentIndex < zetaPath.length) {
+                    const pt = zetaPath[currentIndex];
+                    // Map math coords (x, y) to screen coords
+                    // Math x is real part (horizontal), math y is imaginary (vertical)
+                    // Canvas y is inverted
+                    const sx = cx + pt[0] * scale;
+                    const sy = cy - pt[1] * scale;
+
+                    history.push({ x: sx, y: sy });
+                    currentIndex++;
+                } else {
+                    // Loop
+                    if (currentIndex >= zetaPath.length + 100) { // small pause
+                        currentIndex = 0;
+                        history.length = 0;
+                    } else {
+                        currentIndex++;
+                    }
+                }
+            }
+
+            // Draw Origin
+            ctx.beginPath();
+            ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+            ctx.fillStyle = '#ef4444';
+            ctx.fill();
+
+            // Draw Path
+            ctx.beginPath();
+            if (history.length > 0) {
+                ctx.moveTo(history[0].x, history[0].y);
+                for (let i = 1; i < history.length; i++) {
+                    ctx.lineTo(history[i].x, history[i].y);
+                }
+            }
+
+            ctx.strokeStyle = '#60a5fa';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 4;
+            ctx.shadowColor = '#3b82f6';
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // Head (only if we have points)
+            if (history.length > 0) {
+                const head = history[history.length - 1];
+                ctx.beginPath();
+                ctx.arc(head.x, head.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+            }
+
+            // Time Indicator (Approximate based on index)
+            // tMax = 60, points = 6000 -> t ~ index / 100
+            const tVal = (currentIndex % zetaPath.length) / 100;
+            ctx.fillStyle = '#9ca3af';
+            ctx.font = '10px monospace';
+            ctx.fillText(`t = ${tVal.toFixed(2)}`, 10, 20);
+
+            animationId = requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        return () => cancelAnimationFrame(animationId);
+    }, [mounted]);
 
     return (
-        <div className="w-full h-64 bg-neutral-900/50 rounded-lg border border-neutral-800 relative overflow-hidden flex items-center justify-center">
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-neutral-900/0 to-transparent" />
+        <div className="w-full h-80 bg-neutral-950 rounded-lg border border-neutral-800 relative overflow-hidden flex items-center justify-center">
+            {/* Grid overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-            {/* The "Critical Line" */}
-            <div className="absolute w-full h-[1px] bg-neutral-700/50" />
+            <canvas
+                id="zeta-canvas"
+                className="w-full h-full relative z-10"
+            />
 
-            <svg className="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none">
-                <motion.path
-                    fill="none"
-                    stroke="#60a5fa"
-                    strokeWidth="0.5"
-                    initial={{ d: pathA }}
-                    animate={{ d: pathB }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                    }}
-                />
-            </svg>
-
-            <div className="absolute bottom-4 left-4 text-xs font-mono text-blue-400">
-                Simulation: Z(t) Harmonic Chirp
+            <div className="absolute bottom-4 left-4 text-xs font-mono text-blue-400/80 z-20">
+                <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse" />
+                Critical Line (Pre-Computed)
+            </div>
+            <div className="absolute top-4 right-4 text-xs font-mono text-neutral-600 z-20">
+                Ref: &zeta;(1/2 + it)
             </div>
         </div>
     );
@@ -116,8 +202,8 @@ export function KolakoskiVis() {
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         className={`w-6 h-6 rounded flex items-center justify-center text-xs font-bold font-mono ${val === 1
-                                ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                                : 'bg-red-500/20 text-red-300 border border-red-500/30'
+                            ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                            : 'bg-red-500/20 text-red-300 border border-red-500/30'
                             } ${i === pointer ? 'ring-2 ring-white/50 scale-110' : ''}`}
                     >
                         {val}

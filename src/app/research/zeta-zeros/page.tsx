@@ -62,7 +62,7 @@ export default function ZetaZerosPage() {
                 className="prose prose-invert prose-neutral max-w-none"
             >
                 <p className="text-lg leading-relaxed text-neutral-300">
-                    The Discrete Descent Hybrid Algorithm (v21) addresses the computational challenges of finding Riemann zeta zeros at extreme heights. Standard methods struggle with the function's oscillatory behavior.
+                    The Hybrid Descent Algorithm (v21) addresses the computational challenges of finding Riemann zeta zeros at extreme heights. Standard methods struggle with the function's oscillatory behavior.
                 </p>
                 <p>
                     By utilizing Gram points as topological anchors, the algorithm can navigate directly to zeros without exhaustive searching. This approach transforms the problem from exponential to logarithmic complexity.
@@ -111,12 +111,11 @@ export default function ZetaZerosPage() {
                         The correctness of the algorithm relies on the <strong>Topological Interlacing Property</strong> of Laguerre-Pólya functions.
                     </p>
                     <div className="pl-4 border-l-2 border-blue-500/30 my-4 space-y-2">
-                        <h4 className="text-white font-mono text-sm uppercase mt-0">Lemma (Discrete Weak Niceness)</h4>
+                        <h4 className="text-white font-mono text-sm uppercase mt-0">Lemma (Weak Niceness)</h4>
                         <p className="text-sm italic">
                             Let <MathInline tex="\{t_k\}" /> be the simple real zeros of <MathInline tex="\xi^{(n+1)}(t)" />. If <MathInline tex="\text{sgn}(\xi^{(n)}(t_k)) \ne \text{sgn}(\xi^{(n)}(t_{k+1}))" />, then <MathInline tex="\xi^{(n)}(t)" /> has exactly one real zero in <MathInline tex="(t_k, t_{k+1})" />.
                         </p>
                         <p className="text-xs text-neutral-500 not-italic">
-                            <strong>Discrete:</strong> Relies on discrete Gram points. <br />
                             <strong>Weak:</strong> Valid for finite height <MathInline tex="T" />. <br />
                             <strong>Niceness:</strong> A structural property transferred to the function.
                         </p>

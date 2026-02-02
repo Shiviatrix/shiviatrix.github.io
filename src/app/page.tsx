@@ -103,18 +103,7 @@ export default function Home() {
             coreIdea="Memory pages decay over time and must be 'reinforced' by usage."
             implication="An operating system that 'forgets' unused data naturally like a brain."
           />
-          <ProjectCard
-            title="ℂ-Space Engine"
-            description="A generalized 2D physics engine simulating a universe where physical constants are Complex Numbers."
-            tags={["Physics Sim", "C++20", "Complex Analysis"]}
-            href="/research/c-space"
-            year="2025"
-            highlight
-            progress={75}
-            status="Simulation"
-            coreIdea="Extending Newton's laws to the Complex plane (Imaginary mass & friction)."
-            implication="Predicts 'Death Spirals' and 'Negative Mass Runaways' in exotic physics."
-          />
+
         </div>
       </motion.section>
 
@@ -129,6 +118,14 @@ export default function Home() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ProjectCard
+            title="ℂ-Space Engine"
+            description="A generalized 2D physics engine simulating a universe where physical constants are Complex Numbers."
+            tags={["Physics Sim", "C++20", "Complex Analysis"]}
+            href="/research/c-space"
+            year="2025"
+            progress={75}
+          />
           <ProjectCard
             title="Kolakoski Sequence Analysis"
             description="Investigating structural properties of the Kolakoski sequence density using graph-theoretic approaches on a 34-state manifold."
