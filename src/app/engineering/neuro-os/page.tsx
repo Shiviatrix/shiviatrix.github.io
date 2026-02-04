@@ -55,7 +55,7 @@ export default function NeuroOSPage() {
                 className="prose prose-invert prose-neutral max-w-none"
             >
                 <p className="text-lg leading-relaxed text-neutral-300">
-                    NeuroOS reimagines the operating system kernel as a biological substrate. Inspired by the human brain's requirement for active neural firing to retain information—often summarized as use it or lose it—NeuroOS implements a <strong className="text-white">biomimetic memory persistence model</strong>.
+                    NeuroOS reimagines the operating system kernel as a biological substrate. Inspired by the human brain's requirement for active neural firing to retain information, often summarized as *use it or lose it*, NeuroOS implements a <strong className="text-white">biomimetic memory persistence model</strong>.
                 </p>
                 <p className="text-neutral-400">
                     Unlike traditional OSs where memory is static until overwritten, pages in NeuroOS obey a decay function. The kernel's scheduler acts as a <em>synaptic reinforcement agent</em>, actively refreshing (firing) memory regions based on usage frequency, effectively creating <strong>long-term potentiation</strong> for frequently accessed code paths.
