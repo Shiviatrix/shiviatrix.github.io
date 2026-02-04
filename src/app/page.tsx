@@ -75,7 +75,7 @@ export default function Home() {
             year="2025"
             highlight
             progress={95}
-            status="Verified"
+            status="Under Review"
             coreIdea="O(log n) descent via Gram points instead of O(n) search."
             implication="Proves RH holds at heights where classical methods fail computationally."
           />
@@ -100,8 +100,8 @@ export default function Home() {
             highlight
             progress={60}
             status="Experimental"
-            coreIdea="Memory pages decay over time and must be 'reinforced' by usage."
-            implication="An operating system that 'forgets' unused data naturally like a brain."
+            coreIdea="Memory pages decay over time and must be maintained by frequent usage, mimicking synaptic reinforcement."
+            implication="An operating system that naturally *forgets* unused data, freeing resources like a biological brain."
           />
 
         </div>
@@ -136,7 +136,7 @@ export default function Home() {
           />
           <ProjectCard
             title="Kimberling Expulsion Conjecture"
-            description="Analyzing the Kimberling expulsion process using an O(1) state recurrence. Found record survivor (67B steps)."
+            description="Analyzing the Kimberling expulsion process using an O(1) state recurrence. Discovered a record-breaking survivor lasting 67 billion steps."
             tags={["Dynamics", "Probability", "C++"]}
             href="/research/kimberling"
             year="2025"
@@ -144,7 +144,7 @@ export default function Home() {
           />
           <ProjectCard
             title="Twin Prime Cluster"
-            description="Distributed computing architecture for validating twin prime candidates at scale. Validating 400+ candidates simultaneously."
+            description="Distributed computing architecture for validating twin prime candidates at scale. Concurrently validating over 400 candidates across the cluster."
             tags={["Distributed Systems", "Cloud", "Python"]}
             href="/research/twin-primes"
             year="2025"

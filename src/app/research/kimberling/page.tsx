@@ -65,7 +65,7 @@ export default function KimberlingPage() {
                     <p className="text-lg leading-relaxed text-neutral-300">
                         The Kimberling Sequence uses a destructive shuffling operation:
                         <span className="block border-l-2 border-neutral-800 pl-4 italic my-2 text-neutral-400">
-                            "Arrange positive integers. In stage k, delete the term in position k, then shift remaining terms."
+                            Arrange positive integers. In stage k, delete the term in position k, then shift remaining terms.
                         </span>
                         The <strong>Expulsion Conjecture</strong> asks: is every number eventually deleted?
                     </p>

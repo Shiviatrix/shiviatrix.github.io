@@ -62,10 +62,10 @@ export default function ZetaZerosPage() {
                 className="prose prose-invert prose-neutral max-w-none"
             >
                 <p className="text-lg leading-relaxed text-neutral-300">
-                    The Hybrid Descent Algorithm (v21) addresses the computational challenges of finding Riemann zeta zeros at extreme heights. Standard methods struggle with the function's oscillatory behavior.
+                    The **Hybrid Descent Algorithm (v21)** was engineered to overcome the immense computational hurdles involved in locating Riemann zeta zeros at extreme heights. Classical methods often falter due to the function's intense oscillatory behavior in these regions.
                 </p>
                 <p>
-                    By utilizing Gram points as topological anchors, the algorithm can navigate directly to zeros without exhaustive searching. This approach transforms the problem from exponential to logarithmic complexity.
+                    By leveraging <em>Gram points</em> as topological anchors, the algorithm navigates directly to zeros without the need for exhaustive grid searches. This topological approach effectively transforms the search problem from exponential to logarithmic complexity.
                 </p>
 
                 <div className="my-8">
@@ -86,13 +86,13 @@ export default function ZetaZerosPage() {
                     <div className="space-y-3">
                         <h3 className="text-white font-medium">1. Gram Point Initialization</h3>
                         <p className="text-sm text-neutral-400 leading-relaxed">
-                            We initiate the search at a Gram point <MathInline tex="g_n" /> where <MathInline tex="\vartheta(t) = \pi n" />. This provides a topological anchor guaranteed to be close to extrema of <MathInline tex="Z(t)" />.
+                            The search initiates at a <em>Gram point</em> <MathInline tex="g_n" /> (where <MathInline tex="\vartheta(t) = \pi n" />). These points serve as reliable "topological anchors," guaranteeing proximity to the local extrema of the <MathInline tex="Z(t)" /> function.
                         </p>
                     </div>
                     <div className="space-y-3">
                         <h3 className="text-white font-medium">2. Hybrid Descent</h3>
                         <p className="text-sm text-neutral-400 leading-relaxed">
-                            If the convexity of <MathInline tex="Z(t)" /> is stable, we apply Newton-Raphson. If an inflection is detected (the barrier), we switch to a discrete interlacing step, using the property that zeros separate the extrema.
+                            When the local convexity of <MathInline tex="Z(t)" /> is stable, we employ the <strong>Newton-Raphson</strong> method for rapid convergence. If an inflection point is detected—acting as a barrier—the system seamlessly switches to a discrete interlacing step, exploiting the mathematical property that zeros strictly separate the extrema.
                         </p>
                     </div>
                 </div>
@@ -108,12 +108,18 @@ export default function ZetaZerosPage() {
                 <h2 className="text-2xl font-medium text-white">Validation Strategy</h2>
                 <div className="prose prose-invert prose-neutral max-w-none">
                     <p>
-                        The correctness of the algorithm relies on the <strong>Topological Interlacing Property</strong> of Laguerre-Pólya functions.
+                        The correctness of the algorithm relies on the <strong>Topological Interlacing Property</strong> of <em>Laguerre-Pólya</em> functions.
                     </p>
+                    <div className="bg-neutral-900/50 p-4 rounded-md border border-neutral-800/50 mb-4">
+                        <p className="text-xs text-neutral-500 mb-1 font-mono uppercase">Definition</p>
+                        <p className="text-sm text-neutral-300">
+                            A <strong>Gram point</strong> is a value <MathInline tex="g_n" /> such that the Riemann-Siegel theta function <MathInline tex="\vartheta(g_n)" /> is an integer multiple of <MathInline tex="\pi" />. These points correlate loosely with the zeros of the zeta function.
+                        </p>
+                    </div>
                     <div className="pl-4 border-l-2 border-blue-500/30 my-4 space-y-2">
                         <h4 className="text-white font-mono text-sm uppercase mt-0">Lemma (Weak Niceness)</h4>
                         <p className="text-sm italic">
-                            Let <MathInline tex="\{t_k\}" /> be the simple real zeros of <MathInline tex="\xi^{(n+1)}(t)" />. If <MathInline tex="\text{sgn}(\xi^{(n)}(t_k)) \ne \text{sgn}(\xi^{(n)}(t_{k+1}))" />, then <MathInline tex="\xi^{(n)}(t)" /> has exactly one real zero in <MathInline tex="(t_k, t_{k+1})" />.
+                            Let <MathInline tex="\{t_k\}" /> be the simple real zeros of <MathInline tex="\xi^{(n+1)}(t)" />. If <MathInline tex="\text{sgn}(\xi^{(n)}(t_k)) \ne \text{sgn}(\xi^{(n)}(t_{k+1}))" />, then <MathInline tex="\xi^{(n)}(t)" /> possesses exactly one real zero in the interval <MathInline tex="(t_k, t_{k+1})" />.
                         </p>
                         <p className="text-xs text-neutral-500 not-italic">
                             <strong>Weak:</strong> Valid for finite height <MathInline tex="T" />. <br />
@@ -121,7 +127,7 @@ export default function ZetaZerosPage() {
                         </p>
                     </div>
                     <p>
-                        This allows us to certify zeros using only <strong>sign checks</strong> at discrete points. This direct approach reduces the complexity of resolving a Lehmer pair of width <MathInline tex="\delta" /> from <MathInline tex="O(1/\delta)" /> to <MathInline tex="O(\log(1/\delta))" />.
+                        This enables the rigorous certification of zeros relying solely on <strong>sign checks</strong> at discrete intervals. This direct approach reduces the complexity of resolving a Lehmer pair of width <MathInline tex="\delta" /> from <MathInline tex="O(1/\delta)" /> to <MathInline tex="O(\log(1/\delta))" />.
                     </p>
                 </div>
             </motion.section>
