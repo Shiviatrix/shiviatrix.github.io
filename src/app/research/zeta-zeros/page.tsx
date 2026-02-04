@@ -65,7 +65,7 @@ export default function ZetaZerosPage() {
                     The Hybrid Descent Algorithm (v21) was engineered to overcome the immense computational hurdles involved in locating Riemann zeta zeros at extreme heights. Classical methods often falter due to the function's intense oscillatory behavior in these regions.
                 </p>
                 <p>
-                    By leveraging Gram points as topological anchors, the algorithm navigates directly to zeros without the need for exhaustive grid searches. This topological approach effectively transforms the search problem from exponential to logarithmic complexity.
+                    By leveraging <em>Gram points</em> as topological anchors, the algorithm navigates directly to zeros without the need for exhaustive grid searches. We <strong>hypothesize</strong> that this topological approach transforms the complexity of resolving <strong>Lehmer pairs</strong> (closely spaced zeros) from scaling with the inverse of separation to a logarithmic scale.
                 </p>
 
                 <div className="my-8">
