@@ -187,7 +187,7 @@ export default function KolakoskiPage() {
                     The State Transition Graph <MathInline tex="G" /> appears isomorphic to its complement <MathInline tex="\bar{G}" /> under the mapping <MathInline tex="f(x) = \text{NOT}(x)" />.
                 </p>
                 <p className="text-neutral-400">
-                    This implies that for every path leading to an excess of 1s, there exists an identical "mirror path" leading to an excess of 2s. The sequence likely complies with this symmetry, rendering the 0.5 density a structural necessity.
+                    This implies that for every path leading to an excess of 1s, there exists an identical mirror path leading to an excess of 2s. The sequence likely complies with this symmetry, rendering the 0.5 density a structural necessity.
                 </p>
             </motion.section>
 

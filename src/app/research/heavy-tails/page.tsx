@@ -93,7 +93,7 @@ export default function HeavyTailsPage() {
 
                 <div className="space-y-3 pt-4 border-t border-neutral-800/50">
                     <p className="text-sm font-mono text-neutral-500 flex items-center gap-2">
-                        <span className="text-neutral-400">Argument 1:</span> Infinite "Total Reset" Record Events
+                        <span className="text-neutral-400">Argument 1:</span> Infinite Total Reset Record Events
                     </p>
                     <p className="text-sm font-mono text-neutral-500 flex items-center gap-2">
                         <span className="text-neutral-400">Argument 2:</span> Path Surgery & Connectivity Disconnect
@@ -113,7 +113,7 @@ export default function HeavyTailsPage() {
             >
                 <h3 className="font-mono text-sm text-neutral-500 uppercase tracking-wider">Computational Verification</h3>
                 <p className="text-neutral-400 leading-relaxed">
-                    While the theorem is negative, we computed the theoretical "Ensemble Average" (the value a multiverse observer would see) versus the "Time Average" (what a single observer sees).
+                    While the theorem is negative, we computed the theoretical Ensemble Average (the value a multiverse observer would see) versus the Time Average (what a single observer sees).
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

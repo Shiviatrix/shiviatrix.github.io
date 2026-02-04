@@ -101,7 +101,7 @@ export default function Home() {
             progress={60}
             status="Experimental"
             coreIdea="Memory pages decay over time and must be maintained by frequent usage, mimicking synaptic reinforcement."
-            implication="An operating system that naturally *forgets* unused data, freeing resources like a biological brain."
+            implication="An operating system that naturally forgets unused data, freeing resources like a biological brain."
           />
 
         </div>

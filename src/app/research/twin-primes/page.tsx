@@ -34,7 +34,7 @@ export default function TwinPrimesPage() {
                         </h1>
                     </div>
                     <p className="text-2xl text-neutral-400 font-light max-w-2xl">
-                        Distributed verification of 400,000-digit candidates using a custom "Primorial Shielding" protocol.
+                        Distributed verification of 400,000-digit candidates using a custom Primorial Shielding protocol.
                     </p>
                 </div>
 
@@ -70,12 +70,12 @@ export default function TwinPrimesPage() {
                     The Twin Prime Conjecture asserts there are infinitely many prime pairs <MathInline tex="(p, p+2)" />. Verifying large candidates requires primarily primality testing (typically LLR or Fermat tests) on numbers of the form <MathInline tex="k \cdot 2^N \pm 1" />.
                 </p>
                 <p>
-                    The challenge is computational density. Checking a single 400,000-digit number takes hours on a standard CPU. Validating a batch of 10,000 candidates sequentially would take years. We needed a way to parallelize this "embarrassingly parallel" workload without incurring massive cloud costs.
+                    The challenge is computational density. Checking a single 400,000-digit number takes hours on a standard CPU. Validating a batch of 10,000 candidates sequentially would take years. We needed a way to parallelize this embarrassingly parallel workload without incurring massive cloud costs.
                 </p>
 
                 <h3 className="text-xl font-medium text-white mt-12 mb-4">The Solution: Primorial Shielding</h3>
                 <p>
-                    To avoid wasting cycles on candidates divisible by small primes (3, 5, 7...), we implemented a "Shielding" strategy. We construct a target center <MathInline tex="C" /> using the Primorial <MathInline tex="P\#_{100}" /> (product of first 100 primes):
+                    To avoid wasting cycles on candidates divisible by small primes (3, 5, 7...), we implemented a Shielding strategy. We construct a target center <MathInline tex="C" /> using the Primorial <MathInline tex="P\#_{100}" /> (product of first 100 primes):
                 </p>
                 <MathBlock tex="C = k \cdot P\#_{100} \cdot 2^{1,500,000}" />
                 <p>
