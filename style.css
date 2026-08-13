@@ -1,11 +1,14 @@
 :root {
-    --bg-color: #f5f5f0;
-    --text-color: #2c2c28;
-    --accent-color: #8b3a3a; /* Muted brick red */
-    --border-color: #b5b5b0;
+    --bg-desktop: #008080; 
+    --bg-window: #c0c0c0;
+    --text-color: #000000;
+    --title-bg: #000080;
+    --title-text: #ffffff;
+    --border-light: #ffffff;
+    --border-dark: #808080;
+    --border-black: #000000;
     
-    --font-heading: 'Crimson Pro', Georgia, serif;
-    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --font-ui: Tahoma, "MS Sans Serif", Arial, sans-serif;
 }
 
 /* Reset */
@@ -16,29 +19,16 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-desktop);
     color: var(--text-color);
-    font-family: var(--font-heading);
-    font-size: 18px;
-    line-height: 1.6;
+    font-family: var(--font-ui);
+    font-size: 16px;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    overflow-x: hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('bg.png');
-    background-repeat: repeat;
-    background-size: 200px;
-    opacity: 0.05;
-    z-index: -1;
-    pointer-events: none;
-}
 
 .container {
     display: grid;
@@ -46,196 +36,232 @@ body::before {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    gap: 3rem;
+    gap: 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 @media (min-width: 768px) {
     .container {
         grid-template-columns: 350px 1fr;
-        padding: 4rem 2rem;
-        gap: 5rem;
+        padding: 3rem 2rem;
+        gap: 3rem;
     }
+}
+
+/* Windows 95 Window Style Mixin equivalent */
+.win95-window {
+    background-color: var(--bg-window);
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-black);
+    border-bottom: 2px solid var(--border-black);
+    box-shadow: inset -2px -2px 0 var(--border-dark);
+    padding: 2px;
 }
 
 /* Sidebar / Header */
 .sidebar {
     align-self: start;
     position: sticky;
-    top: 4rem;
+    top: 3rem;
+    background-color: var(--bg-window);
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-black);
+    border-bottom: 2px solid var(--border-black);
+    box-shadow: inset -2px -2px 0 var(--border-dark);
+    padding: 2px;
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+/* Fake Titlebars for the Windows */
+.sidebar::before {
+    content: "Profile.exe";
+    display: block;
+    background: var(--title-bg);
+    color: var(--title-text);
+    font-weight: bold;
+    padding: 2px 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.content::before {
+    content: "Projects - Explorer";
+    display: block;
+    background: var(--title-bg);
+    color: var(--title-text);
+    font-weight: bold;
+    padding: 2px 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .name {
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 0 10px 1rem 10px;
+    font-weight: bold;
 }
 
 .bio {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    margin: 0 10px 1.5rem 10px;
+}
+
+.contact {
+    margin: 0 10px;
 }
 
 .contact p {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin-bottom: 0.25rem;
 }
 
 /* Table of Contents */
 .toc {
-    margin-top: 3rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
+    margin: 2rem 10px 10px 10px;
+    border: 2px solid var(--border-dark);
+    border-right-color: var(--border-light);
+    border-bottom-color: var(--border-light);
+    background-color: #ffffff;
+    padding: 10px;
 }
 
 .toc h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1rem;
     margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: bold;
 }
 
 .toc ul {
     list-style: none;
+    margin-left: 5px;
 }
 
 .toc li {
     margin-bottom: 0.5rem;
 }
 
+.toc li::before {
+    content: "🗂️ "; /* Little folder icon approximation */
+    font-size: 0.9rem;
+}
+
 .toc a {
     text-decoration: none;
     color: var(--text-color);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
 }
 
 .toc a:hover {
-    color: var(--accent-color);
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+    background-color: var(--title-bg);
+    color: var(--title-text);
 }
 
 /* Links */
 a {
-    color: var(--accent-color);
+    color: var(--title-bg);
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
 }
 
 /* Main Content */
 .content {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
+    background-color: var(--bg-window);
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-black);
+    border-bottom: 2px solid var(--border-black);
+    box-shadow: inset -2px -2px 0 var(--border-dark);
+    padding: 2px;
 }
 
 .section {
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
+    margin: 0 10px 1rem 10px;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-dark);
+    border-bottom-style: groove;
 }
 
-.section:first-of-type {
-    border-top: none;
-    padding-top: 0; /* Optional: adjust if it aligns better without the border's padding */
+.section:last-of-type {
+    border-bottom: none;
 }
 
 .project-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .project-header h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.2;
+    font-size: 1.4rem;
+    line-height: 1.3;
     margin-bottom: 0.5rem;
 }
 
 .meta {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--border-color);
-}
-.meta {
-    /* Slightly darker for contrast */
-    color: #666660; 
+    color: #404040;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
 .project-body p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
 }
 
 .project-link {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    border: 1px solid var(--text-color);
+    font-size: 0.95rem;
+    text-align: center;
+    background-color: var(--bg-window);
     color: var(--text-color);
-    padding: 0.5rem 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    
+    /* Classic Win95 Button */
+    border-top: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-black);
+    border-bottom: 2px solid var(--border-black);
+    box-shadow: inset -1px -1px 0 var(--border-dark);
 }
 
 .project-link:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
     text-decoration: none;
 }
 
+.project-link:active {
+    border-top: 2px solid var(--border-black);
+    border-left: 2px solid var(--border-black);
+    border-right: 2px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
+    box-shadow: inset 1px 1px 0 var(--border-dark);
+    padding: 5px 11px 3px 13px;
+}
+
 .site-footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
+    margin: 1rem 10px 10px 10px;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border-dark);
+    border-top-style: groove;
     text-align: center;
-    color: #666660;
-}
-
-/* p5.js Easter Egg Canvas */
-#defaultCanvas0 {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    z-index: -2;
-    pointer-events: none; /* Let clicks pass through to the main site */
-}
-
-/* Game Toggle Button */
-#gameToggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-family: var(--font-mono);
     font-size: 0.9rem;
-    cursor: pointer;
-    z-index: 100; /* Above everything */
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-
-#gameToggle:hover {
-    opacity: 1;
+    color: #404040;
 }
