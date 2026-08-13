@@ -6,9 +6,8 @@
     <title>Akshit Sivaraman — Engineering & Research</title>
     <meta name="description" content="Portfolio of Akshit Sivaraman, featuring works in compiler design, neuromorphic operating systems, and computational number theory.">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -41,14 +40,14 @@
             <section class="section" id="vinglish">
                 <header class="project-header">
                     <h2>Vinglish & VinglishZero</h2>
-                    <span class="meta">Rust | Compilers | Static Analysis</span>
+                    <span class="meta">Rust | Compilers</span>
                 </header>
                 <div class="project-body">
                     <p>
                         <strong>Vinglish:</strong> A statically-typed programming language compiling to C. It features a custom Lexer, recursive-descent parser, MIR lowering, and SSA optimization passes (DCE, constant folding, GVN). Includes a tree-walk interpreter, LSP server, and an experimental LLVM backend.
                     </p>
                     <p>
-                        <strong>VinglishZero:</strong> A deterministic, language-agnostic semantic analysis platform. It lowers code from multiple languages (Python, Java, C) into a shared Semantic IR to query code intent via reproducible rules rather than machine learning inference.
+                        <strong>VinglishZero:</strong> A deterministic, language-agnostic analysis tool. It turns code from multiple languages (Python, Java, C) into a shared IR to query code intent via rules rather than machine learning inference (Works on a similar principal as akinator).
                     </p>
                     <a href="https://github.com/Shiviatrix/vinglish" class="project-link" target="_blank" rel="noopener noreferrer">Source: Vinglish</a>
                     <a href="https://github.com/Shiviatrix/VinglishZero" class="project-link" target="_blank" rel="noopener noreferrer">Source: VinglishZero</a>
@@ -75,7 +74,7 @@
                 </header>
                 <div class="project-body">
                     <p>
-                        A mathematics-secured blockchain replacing traditional hash-mining with Proof of Useful Work (PoUW). It incentivizes the verification of the Riemann Hypothesis using an Interpolated Discrete Descent (IDD) algorithm. It includes a C++/FLINT mining engine for high-order derivative root finding, a Python-based P2P node, and an ERC-20 smart contract for managing ZETA block rewards.
+                        A mathematics-secured blockchain replacing traditional hash-mining with Proof of Useful Work (PoUW). It incentivizes the verification of the Riemann Hypothesis using an Interpolated Discrete Descent (IDD) algorithm. It includes a C++/FLINT mining engine for high-order derivative root finding, a Python-based P2P node, and an ERC-20 smart contract for managing ZETA block rewards. Solve math to get crypto essentially.
                     </p>
                     <a href="https://github.com/Shiviatrix/zeta-chain" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
                 </div>
@@ -119,18 +118,11 @@
                     <a href="https://github.com/Shiviatrix/image-to-equation" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
                 </div>
             </section>
-
         </main>
         
         <footer class="site-footer">
-            <p>Background design from <a href="https://www.dreamstime.com/illustration/india-design.html" target="_blank" rel="noopener noreferrer">Dreamstime</a></p>
+            <p>Akshit Sivaraman</p>
         </footer>
     </div>
-
-    <button id="gameToggle" onclick="toggleGame()">Freeze Game</button>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="easter_egg.js"></script>
 </body>
 </html>
