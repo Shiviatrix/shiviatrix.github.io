@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Rozha+One&display=swap');
+
+:root {
+  --bg-base: #110F0E;
+  --bg-surface: #181514;
+  --bg-surface-soft: #201C1A;
+  
+  --c-terracotta: #C05638;
+  --c-terracotta-muted: #8F3E28;
+  --c-kesar: #D97706;
+  --c-brass: #C5A059;
+  --c-sand: #EAE3D9;
+  --c-clay: #968B7E;
+  --c-faint: rgba(255, 255, 255, 0.06);
+
+  --border-hairline: 1px solid rgba(197, 160, 89, 0.18);
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.07);
+  --border-hover: 1px solid rgba(192, 86, 56, 0.5);
+
+  --font-serif: 'Cinzel', 'Rozha One', Georgia, serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--c-sand);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+::selection {
+  background: var(--c-terracotta);
+  color: #ffffff;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: 
+    radial-gradient(var(--c-brass) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+a {
+  color: var(--c-brass);
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--c-sand);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-soft);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-terracotta-muted);
+}

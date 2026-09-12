@@ -5,121 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akshit Sivaraman — Engineering & Research</title>
     <meta name="description" content="Portfolio of Akshit Sivaraman, featuring works in compiler design, neuromorphic operating systems, and computational number theory.">
-    <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600&family=Rozha+One&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="container">
-        <header class="sidebar">
-            <h1 class="name">Akshit Sivaraman</h1>
-            <p class="bio">
-                Computer science engineering
-            </p>
-            <div class="contact">
-                <p><a href="mailto:shiviatrix@protonmail.com">shiviatrix (at) protonmail (dot) com</a></p>
-                <p>+91 6382124901</p>
-                <p><a href="https://github.com/Shiviatrix" target="_blank" rel="noopener noreferrer">github.com/Shiviatrix</a></p>
-            </div>
-            
-            <nav class="toc">
-                <h2>Index of Works</h2>
-                <ul>
-                    <li><a href="#vinglish">Vinglish & VinglishZero</a></li>
-                    <li><a href="#neuro-os">Neuro-OS</a></li>
-                    <li><a href="#zeta-chain">Zeta-Chain</a></li>
-                    <li><a href="#zeta-engine">Zeta Parallel Engine</a></li>
-                    <li><a href="#heavy-tails">Heavy Tails Verification</a></li>
-                    <li><a href="#image-to-equation">ImageToEquation</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="content">
-            <section class="section" id="vinglish">
-                <header class="project-header">
-                    <h2>Vinglish & VinglishZero</h2>
-                    <span class="meta">Rust | Compilers</span>
-                </header>
-                <div class="project-body">
-                    <p>
-                        <strong>Vinglish:</strong> A statically-typed programming language compiling to C. It features a custom Lexer, recursive-descent parser, MIR lowering, and SSA optimization passes (DCE, constant folding, GVN). Includes a tree-walk interpreter, LSP server, and an experimental LLVM backend.
-                    </p>
-                    <p>
-                        <strong>VinglishZero:</strong> A deterministic, language-agnostic analysis tool. It turns code from multiple languages (Python, Java, C) into a shared IR to query code intent via rules rather than machine learning inference (Works on a similar principal as akinator).
-                    </p>
-                    <a href="https://github.com/Shiviatrix/vinglish" class="project-link" target="_blank" rel="noopener noreferrer">Source: Vinglish</a>
-                    <a href="https://github.com/Shiviatrix/VinglishZero" class="project-link" target="_blank" rel="noopener noreferrer">Source: VinglishZero</a>
-                </div>
-            </section>
-
-            <section class="section" id="neuro-os">
-                <header class="project-header">
-                    <h2>Neuro-OS</h2>
-                    <span class="meta">C | x86 Assembly | Neuromorphic Systems</span>
-                </header>
-                <div class="project-body">
-                    <p>
-                        A bare-metal i686 operating system built from scratch, replacing traditional Round-Robin scheduling with a Neuromorphic Lottery Scheduler. CPU time is probabilistically allocated by a kernel-level Liquid State Machine (LSM) simulating spiking neurons with STDP. The system also implements a custom SHA-256 cryptographic login and a RAM-based VFS with strict file isolation.
-                    </p>
-                    <a href="https://github.com/Shiviatrix/neuro-os" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
-                </div>
-            </section>
-
-            <section class="section" id="zeta-chain">
-                <header class="project-header">
-                    <h2>Zeta-Chain</h2>
-                    <span class="meta">C++ | Python | Solidity | Distributed Systems</span>
-                </header>
-                <div class="project-body">
-                    <p>
-                        A mathematics-secured blockchain replacing traditional hash-mining with Proof of Useful Work (PoUW). It incentivizes the verification of the Riemann Hypothesis using an Interpolated Discrete Descent (IDD) algorithm. It includes a C++/FLINT mining engine for high-order derivative root finding, a Python-based P2P node, and an ERC-20 smart contract for managing ZETA block rewards. Solve math to get crypto essentially.
-                    </p>
-                    <a href="https://github.com/Shiviatrix/zeta-chain" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
-                </div>
-            </section>
-
-            <section class="section" id="zeta-engine">
-                <header class="project-header">
-                    <h2>Riemann Zeta Parallel Engine</h2>
-                    <span class="meta">C++ | OpenMP | MPFR | High-Performance Computing</span>
-                </header>
-                <div class="project-body">
-                    <p>
-                        A massively parallel engine utilizing the Riemann-Siegel formula for pointwise evaluation of the Riemann zeta function at extreme altitudes (T > 10³⁰). Employs OpenMP for lock-free parallel summation and GNU MPFR/GMP for 500-bit mathematical precision, achieving O(log T) memory complexity.
-                    </p>
-                    <a href="https://github.com/Shiviatrix/zeta-parallel-engine" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
-                </div>
-            </section>
-
-            <section class="section" id="heavy-tails">
-                <header class="project-header">
-                    <h2>Heavy Tails Research Verification</h2>
-                    <span class="meta">C | FLINT | Interval Arithmetic</span>
-                </header>
-                <div class="project-body">
-                    <p>
-                        Computer-assisted proof written for a research paper on the failure of the Law of Large Numbers in Heavy-Tailed Sums (specifically the Cauchy α=1 divergence). Utilizes Arb interval (ball) arithmetic to rigorously bound logarithmic moments, avoiding traditional floating-point approximation errors.
-                    </p>
-                    <a href="https://github.com/Shiviatrix/Heavy_tails_research" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
-                </div>
-            </section>
-
-            <section class="section" id="image-to-equation">
-                <header class="project-header">
-                    <h2>ImageToEquation</h2>
-                    <span class="meta">Python | Mathematics | Image Processing</span>
-                </header>
-                <div class="project-body">
-                    <p>
-                        A procedural math art generator that translates pixel data into continuous mathematical formulas without the use of AI. It employs a Polynomial Method to calculate a 40th-degree 3D landscape and a Box-Splitting QuadTree method to handle high-detail regions.
-                    </p>
-                    <a href="https://github.com/Shiviatrix/image-to-equation" class="project-link" target="_blank" rel="noopener noreferrer">Source Repository</a>
-                </div>
-            </section>
-        </main>
-        
-    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
