@@ -31,7 +31,6 @@
     <aside class="sidebar">
       <div class="identity-block">
         <h1 class="author-name">Akshit Sivaraman</h1>
-        <p class="author-subtext">अक्षित शिवरामन</p>
         <p class="author-bio">Computer science engineering</p>
       </div>
 
@@ -132,14 +131,6 @@
     letter-spacing: 0.02em;
     line-height: 1.2;
     margin-bottom: 0.2rem;
-  }
-
-  .author-subtext {
-    font-family: var(--font-serif);
-    font-size: 0.85rem;
-    color: var(--c-terracotta);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.75rem;
   }
 
   .author-bio {
